@@ -7,6 +7,7 @@ public class AtomicVariableDemo {
         Thread t1 = new Thread(new Runnable() {
             public void run() {
                 for (int i = 0; i < 10000; i++) {
+//                    counter++;
                     counter.incrementAndGet();
                 }
 
@@ -15,6 +16,7 @@ public class AtomicVariableDemo {
         Thread t2 = new Thread(new Runnable() {
             public void run() {
                 for (int i = 0; i < 10000; i++) {
+//                    counter++;
                     counter.incrementAndGet();
                 }
             }
