@@ -1,12 +1,11 @@
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class SingleThreadExecutorDemo {
-
+public class FixedThreadPoolExecutorDemo {
     public static void main(String[] args) {
-        Thread thread = new Thread(new Runnable() {
+        Thread t1 = new Thread(new Runnable() {
             public void run() {
-                System.out.println(Thread.currentThread().getName()+" Running");
+                System.out.println(Thread.currentThread().getName()+ " is running.");
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException e) {
@@ -14,11 +13,11 @@ public class SingleThreadExecutorDemo {
                 }
             }
         });
-        try (ExecutorService executorService = Executors.newSingleThreadExecutor()) {
+
+        try(ExecutorService executor = Executors.newFixedThreadPool(3)) {
             for (int i = 0; i < 10; i++) {
-                executorService.execute(thread);
+                executor.execute(t1);
             }
         }
-
     }
 }
